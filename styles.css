@@ -1,0 +1,242 @@
+:root {
+    --box-width: 1vw;
+    --box-spacing: 0.1vw;
+    --controls-height: 10vh;
+    --controls-toggler-width: 8vw;
+    --controls-toggler-padding: 0.5vw;
+    --color-bg-1: #1a1b25;
+    --color-bg-2: #242632;
+    --color-text-1: #f8fafc;
+    --color-text-2: #94a3b8;
+    --color-text-3: #818cf8;
+    --color-input: #2e3447;
+    --color-border: #374151;
+    --color-hover: #4f46e5;
+}
+html {
+    height: 100vh;
+    overflow-y: auto;
+}
+body {
+    background-color: var(--color-bg-1);
+    overflow: hidden;
+    margin: 0;
+    height: 100vh;
+}
+h5 {
+    margin-top: -20px;
+    margin-bottom: -8px;
+}
+a:link {
+    color: var(--color-text-3);
+}
+
+a:visited {
+    color: var(--color-text-2);
+}
+
+a:hover {
+    color: var(--color-hover);
+    text-decoration: underline;
+}
+
+a:active {
+    color: var(--color-bg-1);
+}
+.wrapper {
+    display: grid;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    grid-template-rows: auto 1fr;
+    left: var(--controls-toggler-width);
+    right: var(--controls-toggler-width);
+}
+.controls {
+    top: 0;
+    background-color: var(--color-bg-1);
+    padding: 10px;
+    z-index: 1000;
+    text-align: center;
+    color: var(--color-text-1);
+    border-bottom: 2px solid var(--color-border);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+input {
+    background-color: var(--color-input);
+}
+input[type="date"] {
+    width: 200px;
+    padding: 8px 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    background-color: var(--color-input);
+    color: var(--color-text-1);
+    font-size: 16px;
+    margin: 10px 0;
+}
+input:focus {
+    outline: none;
+    border-color: var(--color-hover);
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+}
+.birthday-controls label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--color-text-2);
+    font-size: 14px;
+}
+.birthday-controls {
+    margin: 20px auto;
+    padding: 15px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background-color: var(--color-bg-2);
+    max-width: 400px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+button {
+    padding: 8px 16px;
+    background-color: var(--color-input);
+    color: var(--color-text-1);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+}
+button:hover {
+    background-color: var(--color-hover);
+}
+button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+}
+.period-controls {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.period-input {
+    border: 1px solid var(--color-border);
+    padding: 10px;
+    border-radius: 6px;
+    background-color: var(--color-bg-2);
+}
+.period-input input {
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 8px;
+    color: var(--color-text-1);
+}
+.period-list {
+    max-height: 150px;
+    overflow-y: auto;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    background-color: var(--color-bg-2);
+}
+.period-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--color-border);
+    padding: 5px;
+}
+.period-item:last-child {
+    border-bottom: none;
+}
+.period-item button {
+    background: none;
+    border: none;
+    color: red;
+    cursor: pointer;
+}
+.period-item button:hover {
+    color: darkred;
+}
+.container {
+    margin-top: 2vh;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    overflow-y: auto;
+    overflow-x: hidden;
+    grid-row-start: 2;
+    background: var(--color-bg-2);
+    border-radius: 8px;
+    border-top: 2px solid var(--color-border);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.container::after {
+    content: "";
+    display: block;
+    height: 200vh; /* Adjust based on your content */
+}
+.controls-toggler {
+    position: fixed;
+    left: 0; /* Adjust this value as needed */
+    top: 0;
+    height: 100vh;
+    width: 7vw;
+    background: none;
+    border: 1px solid var(--color-border);
+    cursor: pointer;
+    user-select: none;
+    font-size: 24px;
+    color: var(--color-text-2);
+}
+.controls-toggler:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.controls-toggler p {
+    text-align: left;
+    margin: 0; /* Reset margin */
+}
+.row-labels {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: 10px;
+    font-family: Arial, sans-serif;
+    color: var(--color-text-2);
+}
+.row-labels div {
+    height: calc(var(--box-width) + var(--box-spacing));
+    line-height: calc(var(--box-width) + var(--box-spacing));
+    text-align: right;
+    font-size: var(--box-width);
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(52, minmax(1px, var(--box-width)));
+    grid-template-rows: repeat(90, var(--box-width));
+    gap: var(--box-spacing);
+}
+.box {
+    width: var(--box-width);
+    aspect-ratio: 1;
+    background-color: var(--color-text-2);
+    border-radius: 0.05vw;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.2s ease;
+}
+.box:hover {
+    border-color: var(--color-hover);
+    transform: scale(1.1);
+    box-shadow: 0 0 8px rgba(79, 70, 229, 0.4);
+}
+.row-labels {
+    border-right: 1px solid var(--color-border);
+}

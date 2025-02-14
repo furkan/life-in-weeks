@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Life in Weeks</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <div class="controls-toggler">
+            <button
+                class="controls-toggler"
+                id="controls-toggler"
+                onclick="toggleControls()"
+            >
+                <span>LIFE IN WEEKS</span>
+            </button>
+        </div>
+
+        <div class="wrapper">
+            <div class="controls">
+                <h1>Life in Weeks</h1>
+                <h5>by <a href="https://github.com/furkan">furkan</a></h5>
+                <div class="birthday-controls">
+                    <label for="birthday">Birthday: </label>
+                    <input type="date" id="birthday" />
+                    <button onclick="updateGrid()">Update</button>
+                </div>
+                <div class="period-controls">
+                    <div class="period-input">
+                        <input
+                            type="text"
+                            id="period-name"
+                            placeholder="Period name"
+                        />
+                        <input type="date" id="period-end" />
+                        <button onclick="addPeriod()">+</button>
+                    </div>
+                    <div class="period-list"></div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row-labels" id="row-labels"></div>
+                <div class="grid" id="grid"></div>
+            </div>
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>
