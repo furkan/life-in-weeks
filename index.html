@@ -7,6 +7,39 @@
         <link rel="stylesheet" href="styles.css" />
     </head>
     <body>
+        <div class="controls hidden-content">
+            <div class="controls-text">
+                <h1>Life in Weeks</h1>
+                <h5>by <a href="https://github.com/furkan">furkan</a></h5>
+            </div>
+            <div class="birthday-controls">
+                <label for="birthday">Birthday: </label>
+                <input type="date" id="birthday" />
+                <button onclick="updateBirthday()">
+                    <span>&#x21bb;</span>
+                </button>
+            </div>
+            <div class="period-controls">
+                <div class="period-input">
+                    <input
+                        type="text"
+                        id="period-name"
+                        placeholder="Period name"
+                        size="10"
+                    />
+                    <input type="date" id="period-end" />
+                    <button onclick="addPeriod()">+</button>
+                </div>
+                <div class="period-list"></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="week-numbers" id="week-numbers"></div>
+            <div class="life-calendar" id="life-calendar">
+                <div class="row-labels" id="row-labels"></div>
+                <div class="grid" id="grid"></div>
+            </div>
+        </div>
         <div class="controls-toggler">
             <button
                 class="controls-toggler"
@@ -15,34 +48,6 @@
             >
                 <span>LIFE IN WEEKS</span>
             </button>
-        </div>
-
-        <div class="wrapper">
-            <div class="controls">
-                <h1>Life in Weeks</h1>
-                <h5>by <a href="https://github.com/furkan">furkan</a></h5>
-                <div class="birthday-controls">
-                    <label for="birthday">Birthday: </label>
-                    <input type="date" id="birthday" />
-                    <button onclick="updateGrid()">Update</button>
-                </div>
-                <div class="period-controls">
-                    <div class="period-input">
-                        <input
-                            type="text"
-                            id="period-name"
-                            placeholder="Period name"
-                        />
-                        <input type="date" id="period-end" />
-                        <button onclick="addPeriod()">+</button>
-                    </div>
-                    <div class="period-list"></div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row-labels" id="row-labels"></div>
-                <div class="grid" id="grid"></div>
-            </div>
         </div>
         <script src="index.js"></script>
     </body>
