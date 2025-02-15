@@ -1,18 +1,33 @@
 const years = 90;
 let periods = [];
 
-function generateGrid(birthday) {
-  const rowLabels = document.getElementById("row-labels");
-  const grid = document.getElementById("grid");
-  rowLabels.innerHTML = "";
-  grid.innerHTML = "";
+function createWeekNumbers() {
+  const weekNumbersContainer = document.getElementById("week-numbers");
+  for (let i = 4; i <= 52; i += 4) {
+    const weekNumber = document.createElement("div");
+    weekNumber.className = "week-number";
+    weekNumber.textContent = i;
+    weekNumbersContainer.appendChild(weekNumber);
+  }
+}
 
-  // Create row labels (years)
+function createRowLabels() {
+  const rowLabels = document.getElementById("row-labels");
+  rowLabels.innerHTML = "";
   for (let i = 0; i < years; i++) {
     let label = document.createElement("div");
-    label.textContent = i;
+    if (i % 5 === 0) {
+      label.textContent = i;
+    } else {
+      label.textContent = "\n";
+    }
     rowLabels.appendChild(label);
   }
+}
+
+function generateGrid(birthday) {
+  const grid = document.getElementById("grid");
+  grid.innerHTML = "";
 
   // Create grid boxes (weeks)
   const totalWeeks = years * 52;
@@ -93,8 +108,8 @@ function updatePeriodsList() {
     const item = document.createElement("div");
     item.className = "period-item";
     item.innerHTML = `
-            <span>${period.name} (until ${period.endDate})</span>
             <button onclick="removePeriod(${period.id})">×</button>
+            <span>${period.name} (until ${period.endDate})</span>
         `;
     list.appendChild(item);
   });
@@ -145,17 +160,24 @@ function removePeriod(id) {
 
 function toggleControls() {
   const controls = document.querySelector(".controls");
-  controls.hidden = !controls.hidden;
-  document.getElementById("controls-toggler").textContent = controls.hidden
-    ? "≡"
-    : "×";
-  localStorage.setItem("controlsHidden", controls.hidden);
+  const container = document.querySelector(".container");
+  const controlsToggler = document.querySelector("#controls-toggler");
+
+  if (controlsToggler.textContent === "x") {
+    controlsToggler.textContent = "≡";
+  } else {
+    controlsToggler.textContent = "x";
+  }
+  container.classList.toggle("hidden-content");
+  controls.classList.toggle("hidden-content");
+}
+
+function updateBirthday() {
+  updateGrid();
+  toggleControls();
 }
 
 window.onload = function () {
-  const controls = document.querySelector(".controls");
-  controls.hidden = localStorage.getItem("controlsHidden");
-
   const savedBirthday = localStorage.getItem("lifeInWeeksBirthday");
   const savedPeriods = localStorage.getItem("lifeInWeeksPeriods");
 
@@ -172,4 +194,7 @@ window.onload = function () {
     document.getElementById("birthday").value = defaultBirthday;
     generateGrid(new Date(defaultBirthday));
   }
+
+  createWeekNumbers();
+  createRowLabels();
 };
